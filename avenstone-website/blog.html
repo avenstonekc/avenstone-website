@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expert insights on construction, real estate, and property management from Avenstone Group. Industry news, tips, and project updates.">
+    <title>Blog | Avenstone Group</title>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: #0a1929;
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #c9a96e;
+        }
+        
+        .cta-button {
+            background: #c9a96e;
+            color: white;
+            padding: 0.9rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #b89858;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 169, 110, 0.4);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #0a1929 0%, #1a2d42 100%);
+            color: white;
+            padding: 180px 3rem 100px;
+            text-align: center;
+            margin-top: 100px;
+        }
+        
+        .page-header h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+        
+        .page-header p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Blog Section */
+        .blog-section {
+            max-width: 1400px;
+            margin: 100px auto;
+            padding: 0 3rem;
+        }
+        
+        /* Featured Post */
+        .featured-post {
+            margin-bottom: 80px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            background: white;
+        }
+        
+        .featured-image {
+            height: 500px;
+            overflow: hidden;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        
+        .featured-post:hover .featured-image img {
+            transform: scale(1.05);
+        }
+        
+        .featured-content {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .post-category {
+            display: inline-block;
+            background: #c9a96e;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .featured-content h2 {
+            font-size: 2.5rem;
+            color: #0a1929;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .post-meta {
+            color: #999;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .featured-content p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .read-more {
+            display: inline-block;
+            background: #c9a96e;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            align-self: flex-start;
+        }
+        
+        .read-more:hover {
+            background: #b89858;
+            transform: translateX(5px);
+        }
+        
+        /* Blog Grid */
+        .section-title {
+            font-size: 2.5rem;
+            color: #0a1929;
+            margin-bottom: 3rem;
+            font-weight: 800;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .blog-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        
+        .blog-card:hover .blog-image img {
+            transform: scale(1.1);
+        }
+        
+        .blog-content {
+            padding: 2rem;
+        }
+        
+        .blog-content .post-category {
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.5rem;
+            color: #0a1929;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+        
+        .blog-content .post-meta {
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, #0a1929 0%, #1a2d42 100%);
+            padding: 80px 3rem;
+            margin: 100px 0;
+        }
+        
+        .newsletter-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            color: white;
+        }
+        
+        .newsletter-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .newsletter-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            background: #c9a96e;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background: #b89858;
+        }
+        
+        /* Footer */
+        footer {
+            background: #050d15;
+            color: white;
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        footer p {
+            opacity: 0.7;
+            font-size: 1rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-content {
+                padding: 2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .blog-section,
+            .newsletter-section {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="logo.png" alt="Avenstone Group Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="cta-button">Get Started</a>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1>Insights & Updates</h1>
+        <p>Expert advice on construction, real estate, and property management</p>
+    </section>
+
+    <section class="blog-section">
+        <!-- Featured Post -->
+        <div class="featured-post">
+            <div class="featured-image">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="Featured Post">
+            </div>
+            <div class="featured-content">
+                <span class="post-category">Construction</span>
+                <h2>2025 Construction Trends: What Property Owners Need to Know</h2>
+                <p class="post-meta">February 15, 2025 • 8 min read</p>
+                <p>Discover the latest innovations in sustainable building, smart home technology, and cost-effective construction methods that are reshaping the industry in 2025.</p>
+                <a href="#" class="read-more">Read Full Article →</a>
+            </div>
+        </div>
+
+        <!-- Blog Grid -->
+        <h2 class="section-title">Recent Articles</h2>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80" alt="Real Estate Market">
+                </div>
+                <div class="blog-content">
+                    <span class="post-category">Real Estate</span>
+                    <h3>Understanding the Current Real Estate Market</h3>
+                    <p class="post-meta">February 10, 2025 • 6 min read</p>
+                    <p>Navigate today's competitive market with insights on pricing strategies, buyer behavior, and investment opportunities.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=600&q=80" alt="Property Management">
+                </div>
+                <div class="blog-content">
+                    <span class="post-category">Property Management</span>
+                    <h3>5 Ways to Maximize Your Rental Property ROI</h3>
+                    <p class="post-meta">February 5, 2025 • 5 min read</p>
+                    <p>Proven strategies to increase rental income, reduce vacancies, and improve tenant satisfaction for better returns.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80" alt="Construction Tips">
+                </div>
+                <div class="blog-content">
+                    <span class="post-category">Construction</span>
+                    <h3>Planning Your Commercial Renovation: A Complete Guide</h3>
+                    <p class="post-meta">January 28, 2025 • 10 min read</p>
+                    <p>Everything you need to know about budgeting, permits, timelines, and minimizing disruption during your renovation.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80" alt="Investment">
+                </div>
+                <div class="blog-content">
+                    <span class="post-category">Investment</span>
+                    <h3>Commercial Real Estate Investment in 2025</h3>
+                    <p class="post-meta">January 20, 2025 • 7 min read</p>
+                    <p>Explore emerging opportunities in commercial real estate and learn how to evaluate potential investments effectively.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Sustainability">
+                </div>
+                <div class="blog-content">
+                    <span class="post-category">Sustainability</span>
+                    <h3>Green Building: Beyond LEED Certification</h3>
+                    <p class="post-meta">January 15, 2025 • 8 min read</p>
+                    <p>Discover sustainable building practices that reduce costs, improve efficiency, and benefit the environment.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=600&q=80" alt="Technology">
+                </div>
+                <div class="blog-content">
+                    <span class="post-category">Technology</span>
+                    <h3>Smart Property Management Tech Tools</h3>
+                    <p class="post-meta">January 8, 2025 • 6 min read</p>
+                    <p>The latest technology solutions that streamline operations and improve tenant experiences in property management.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <h2>Stay Informed</h2>
+            <p>Get monthly insights, industry news, and exclusive updates delivered to your inbox</p>
+            <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="newsletter">
+                <input type="email" name="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Avenstone Group. All rights reserved.</p>
+    </footer>
+</body>
+</html>

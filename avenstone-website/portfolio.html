@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Avenstone Group's portfolio of successful construction, real estate, and property management projects. See our work and results.">
+    <title>Our Portfolio | Avenstone Group</title>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* ===== HEADER & NAV (same system as other pages) ===== */
+        header {
+            background: #0a1929;
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+            position: relative;
+            flex-wrap: nowrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            letter-spacing: 1px;
+            gap: 0.5rem;
+        }
+        
+        .logo img {
+            height: 120px;
+            width: auto;
+        }
+        
+        /* desktop nav links */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #c9a96e;
+        }
+        
+        .cta-button {
+            background: #c9a96e;
+            color: white;
+            padding: 0.9rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
+            white-space: nowrap;
+        }
+        
+        .cta-button:hover {
+            background: #b89858;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 169, 110, 0.4);
+        }
+
+        /* ===== MOBILE MENU BUTTON ===== */
+        .mobile-menu-button {
+            display: none;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        /* ===== MOBILE NAV PANEL (dropdown) ===== */
+        .mobile-nav-panel {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            width: 100%;
+            background: #0a1929;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border-radius: 0 0 8px 8px;
+            padding: 1rem 1.5rem 1.5rem;
+        }
+
+        .mobile-nav-panel.open {
+            display: block;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: grid;
+            row-gap: 1rem;
+        }
+
+        .mobile-nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .mobile-nav-links a.active {
+            color: #c9a96e;
+            font-weight: 600;
+        }
+
+        .mobile-nav-links .cta-button {
+            display: inline-block;
+            text-align: center;
+        }
+        
+        /* ===== PAGE HEADER / HERO STRIP ===== */
+        .page-header {
+            background: linear-gradient(135deg, rgba(10, 25, 41, 0.95) 0%, rgba(26, 45, 66, 0.9) 100%),
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80') center/cover;
+            color: white;
+            padding: 180px 3rem 100px;
+            text-align: center;
+            margin-top: 100px; /* space below fixed header */
+        }
+        
+        .page-header h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+        
+        .page-header p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* ===== FILTER TABS ===== */
+        .filter-tabs {
+            max-width: 1400px;
+            margin: -50px auto 80px;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-tab {
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .filter-tab:hover,
+        .filter-tab.active {
+            background: #c9a96e;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(201, 169, 110, 0.3);
+        }
+        
+        /* ===== PROJECT CASE STUDIES ===== */
+        .project-section {
+            max-width: 1400px;
+            margin: 100px auto;
+            padding: 0 3rem;
+        }
+        
+        .project-case {
+            margin-bottom: 120px;
+        }
+        
+        .project-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        
+        .project-hero-image {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            height: 500px;
+        }
+        
+        .project-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .project-info h2 {
+            font-size: 3rem;
+            color: #0a1929;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            font-size: 0.85rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+        
+        .meta-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0a1929;
+        }
+        
+        .project-description {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #666;
+            margin: 2rem 0;
+        }
+        
+        .project-tag {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #0a1929;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* PROJECT DETAIL GRID */
+        .project-details {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+        
+        .detail-content h3 {
+            font-size: 2rem;
+            color: #0a1929;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .detail-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .detail-content ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .detail-content ul li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.05rem;
+        }
+        
+        .detail-content ul li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #c9a96e;
+            font-weight: bold;
+        }
+        
+        .stats-sidebar {
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 16px;
+            height: fit-content;
+        }
+        
+        .stat-box {
+            margin-bottom: 2.5rem;
+        }
+        
+        .stat-box:last-child {
+            margin-bottom: 0;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #c9a96e;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 600;
+        }
+        
+        /* IMAGE GALLERY */
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .gallery-image {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* TESTIMONIAL BOX */
+        .project-testimonial {
+            background: linear-gradient(135deg, #0a1929 0%, #1a2d42 100%);
+            padding: 4rem;
+            border-radius: 16px;
+            color: white;
+            margin: 4rem 0;
+            position: relative;
+        }
+        
+        .quote-mark {
+            font-size: 6rem;
+            color: #c9a96e;
+            opacity: 0.2;
+            position: absolute;
+            top: 20px;
+            left: 40px;
+        }
+        
+        .testimonial-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .testimonial-role {
+            color: #c9a96e;
+            font-size: 1rem;
+            margin-top: 0.3rem;
+        }
+        
+        /* DIVIDER */
+        .project-divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #c9a96e, transparent);
+            margin: 80px 0;
+        }
+        
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, #0a1929 0%, #1a2d42 100%);
+            padding: 100px 3rem;
+            text-align: center;
+            color: white;
+            margin-top: 100px;
+        }
+        
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .hero-button-primary {
+            display: inline-block;
+            background: #c9a96e;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        
+        .hero-button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(201, 169, 110, 0.5);
+        }
+        
+        .hero-button-secondary {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: 2px solid white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .hero-button-secondary:hover {
+            background: white;
+            color: #0a1929;
+            transform: translateY(-3px);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #050d15;
+            color: white;
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        footer p {
+            opacity: 0.7;
+            font-size: 1rem;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .project-header,
+            .project-details {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .project-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .logo img {
+                height: 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1.5rem;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                row-gap: 1rem;
+            }
+            
+            /* hide desktop links and CTA on mobile */
+            .nav-links,
+            .cta-button {
+                display: none;
+            }
+
+            /* show mobile menu button */
+            .mobile-menu-button {
+                display: inline-block;
+                margin-left: auto;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .project-info h2 {
+                font-size: 2rem;
+            }
+            
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-section,
+            .cta-section {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            
+            .project-testimonial {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="logo.png" alt="Avenstone Group Logo"></a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a class="active" href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <a href="contact.html" class="cta-button">Get Started</a>
+
+            <!-- Mobile menu trigger -->
+            <button class="mobile-menu-button" onclick="toggleMobileNav()">Menu</button>
+
+            <!-- Mobile dropdown panel -->
+            <div id="mobileNavPanel" class="mobile-nav-panel">
+                <ul class="mobile-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a class="active" href="portfolio.html">Portfolio</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a class="cta-button" href="contact.html">Get Started</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- PAGE HERO -->
+    <section class="page-header">
+        <h1>Our Portfolio</h1>
+        <p>Explore our successful projects and see how we transform visions into reality</p>
+    </section>
+
+    <!-- FILTER BAR -->
+    <div class="filter-tabs">
+        <button class="filter-tab active">All Projects</button>
+        <button class="filter-tab">Construction</button>
+        <button class="filter-tab">Real Estate</button>
+        <button class="filter-tab">Property Management</button>
+    </div>
+
+    <!-- PROJECTS -->
+    <section class="project-section">
+        <!-- Project 1 -->
+        <div class="project-case">
+            <div class="project-header">
+                <div class="project-hero-image">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80" alt="Modern Residential Complex">
+                </div>
+                <div class="project-info">
+                    <h2>Oakwood Residential Complex</h2>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Service</span>
+                            <span class="meta-value">Construction</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Completed</span>
+                            <span class="meta-value">2024</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Value</span>
+                            <span class="meta-value">$12.5M</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Units</span>
+                            <span class="meta-value">50</span>
+                        </div>
+                    </div>
+                    <p class="project-description">A luxury 50-unit residential development featuring modern amenities, sustainable design, and premium finishes throughout. This project showcases our ability to deliver large-scale residential construction on time and within budget.</p>
+                    <div>
+                        <span class="project-tag">Residential</span>
+                        <span class="project-tag">Multi-Family</span>
+                        <span class="project-tag">Luxury</span>
+                        <span class="project-tag">LEED Certified</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-details">
+                <div class="detail-content">
+                    <h3>Project Overview</h3>
+                    <p>The Oakwood Residential Complex represents one of our most ambitious residential projects to date. Spanning 5 acres, this modern development includes 50 luxury units ranging from studios to three-bedroom penthouses.</p>
+                    <p>Our team managed every aspect of construction, from foundation to final finishes, ensuring the highest standards of quality and craftsmanship throughout.</p>
+                    
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>Energy-efficient HVAC systems reducing costs by 30%</li>
+                        <li>Smart home technology in all units</li>
+                        <li>Rooftop garden and community spaces</li>
+                        <li>Underground parking with EV charging stations</li>
+                        <li>State-of-the-art fitness center and pool</li>
+                        <li>Sustainable materials throughout construction</li>
+                    </ul>
+                    
+                    <h3>Results</h3>
+                    <p>The project was completed 3 weeks ahead of schedule and came in 5% under budget. All units were sold within 6 months of completion, with buyers praising the quality of construction and modern amenities.</p>
+                </div>
+                
+                <div class="stats-sidebar">
+                    <div class="stat-box">
+                        <span class="stat-number">18</span>
+                        <span class="stat-label">Months to Complete</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Units Sold</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">$12.5M</span>
+                        <span class="stat-label">Project Value</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">LEED</span>
+                        <span class="stat-label">Gold Certified</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Interior View">
+                </div>
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80" alt="Common Area">
+                </div>
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=600&q=80" alt="Exterior Night">
+                </div>
+            </div>
+            
+            <div class="project-testimonial">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">Avenstone Group exceeded every expectation. Their attention to detail, communication, and ability to problem-solve on the fly made this complex project feel effortless. The quality of their work speaks for itself.</p>
+                <p class="testimonial-author">David Chen</p>
+                <p class="testimonial-role">Developer, Oakwood Properties</p>
+            </div>
+        </div>
+
+        <div class="project-divider"></div>
+
+        <!-- Project 2 -->
+        <div class="project-case">
+            <div class="project-header">
+                <div class="project-hero-image">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Downtown Office Tower">
+                </div>
+                <div class="project-info">
+                    <h2>Meridian Office Tower</h2>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Service</span>
+                            <span class="meta-value">Construction &amp; Sales</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Completed</span>
+                            <span class="meta-value">2023</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Value</span>
+                            <span class="meta-value">$28M</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Size</span>
+                            <span class="meta-value">120,000 sq ft</span>
+                        </div>
+                    </div>
+                    <p class="project-description">A 12-story Class A office building in the heart of downtown, featuring premium office spaces, ground-floor retail, and modern amenities. We handled both construction and commercial leasing for this landmark project.</p>
+                    <div>
+                        <span class="project-tag">Commercial</span>
+                        <span class="project-tag">Office Space</span>
+                        <span class="project-tag">Mixed-Use</span>
+                        <span class="project-tag">Downtown</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-details">
+                <div class="detail-content">
+                    <h3>Project Overview</h3>
+                    <p>The Meridian Office Tower is a stunning addition to the downtown skyline. This 12-story commercial building offers 120,000 square feet of premium office space, with floor-to-ceiling windows, open floor plans, and modern infrastructure designed for today's businesses.</p>
+                    
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>Flexible floor plans from 2,000 to 15,000 sq ft</li>
+                        <li>High-speed fiber optic connectivity</li>
+                        <li>Ground-floor restaurant and retail spaces</li>
+                        <li>Covered parking garage with 200 spaces</li>
+                        <li>Rooftop conference center and terrace</li>
+                        <li>24/7 security and building management</li>
+                    </ul>
+                    
+                    <h3>Results</h3>
+                    <p>Completed on schedule with 85% of office space pre-leased before construction finished. The building achieved LEED Silver certification and has become a sought-after business address in the downtown core.</p>
+                </div>
+                
+                <div class="stats-sidebar">
+                    <div class="stat-box">
+                        <span class="stat-number">24</span>
+                        <span class="stat-label">Months to Complete</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Occupancy Rate</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">Stories</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">25+</span>
+                        <span class="stat-label">Tenant Companies</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80" alt="Office Interior">
+                </div>
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80" alt="Lobby">
+                </div>
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80" alt="Exterior">
+                </div>
+            </div>
+            
+            <div class="project-testimonial">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">From construction to tenant placement, Avenstone Group was with us every step of the way. Their dual expertise in building and commercial real estate made this project seamless. We couldn't have asked for a better partner.</p>
+                <p class="testimonial-author">Sarah Williams</p>
+                <p class="testimonial-role">CEO, Meridian Development Group</p>
+            </div>
+        </div>
+
+        <div class="project-divider"></div>
+
+        <!-- Project 3 -->
+        <div class="project-case">
+            <div class="project-header">
+                <div class="project-hero-image">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" alt="Multi-family Housing">
+                </div>
+                <div class="project-info">
+                    <h2>Riverside Property Portfolio</h2>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Service</span>
+                            <span class="meta-value">Property Management</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Started</span>
+                            <span class="meta-value">2020</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Portfolio Value</span>
+                            <span class="meta-value">$45M</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Units</span>
+                            <span class="meta-value">280</span>
+                        </div>
+                    </div>
+                    <p class="project-description">Comprehensive property management services for a 280-unit multi-family portfolio across 8 properties. We've maximized occupancy, improved tenant satisfaction, and increased property values through strategic management.</p>
+                    <div>
+                        <span class="project-tag">Property Management</span>
+                        <span class="project-tag">Multi-Family</span>
+                        <span class="project-tag">Portfolio</span>
+                        <span class="project-tag">Full-Service</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-details">
+                <div class="detail-content">
+                    <h3>Management Approach</h3>
+                    <p>When we took over management of the Riverside Portfolio in 2020, occupancy was at 78% and tenant satisfaction scores were low. We implemented a comprehensive turnaround strategy focusing on property improvements, responsive maintenance, and better tenant communication.</p>
+                    
+                    <h3>Services Provided</h3>
+                    <ul>
+                        <li>24/7 emergency maintenance response</li>
+                        <li>Comprehensive tenant screening and placement</li>
+                        <li>Regular property inspections and preventive maintenance</li>
+                        <li>Online rent payment portal and tenant app</li>
+                        <li>Strategic capital improvements and upgrades</li>
+                        <li>Financial reporting and budget management</li>
+                    </ul>
+                    
+                    <h3>Results</h3>
+                    <p>Within 18 months, we increased occupancy to 97%, improved tenant retention by 40%, and increased net operating income by 22%. Property values have appreciated 18% since we began management.</p>
+                </div>
+                
+                <div class="stats-sidebar">
+                    <div class="stat-box">
+                        <span class="stat-number">97%</span>
+                        <span class="stat-label">Occupancy Rate</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">22%</span>
+                        <span class="stat-label">NOI Increase</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">280</span>
+                        <span class="stat-label">Units Managed</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">4.8/5</span>
+                        <span class="stat-label">Tenant Rating</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80" alt="Property Exterior">
+                </div>
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" alt="Community Space">
+                </div>
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80" alt="Unit Interior">
+                </div>
+            </div>
+            
+            <div class="project-testimonial">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">Switching to Avenstone for property management was the best decision we made. They transformed our struggling portfolio into a high-performing asset. Their professionalism and results-driven approach are unmatched.</p>
+                <p class="testimonial-author">Michael Torres</p>
+                <p class="testimonial-role">Managing Partner, Riverside Holdings</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA STRIPE -->
+    <section class="cta-section">
+        <h2>Ready to Build Something Great?</h2>
+        <p>Whether you’re planning new construction, looking to invest, or need full-service management — let’s talk.</p>
+        <div class="cta-buttons">
+            <a href="contact.html" class="hero-button-primary">Start a Conversation</a>
+            <a href="services.html" class="hero-button-secondary">View Our Services</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Avenstone Group. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // mobile nav toggle for "Menu" button
+        function toggleMobileNav() {
+            const panel = document.getElementById('mobileNavPanel');
+            panel.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

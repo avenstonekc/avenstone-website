@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Avenstone Group offers comprehensive construction, real estate sales, and property management services. Explore our expertise and service offerings.">
+    <title>Our Services | Avenstone Group</title>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* ===== HEADER & NAV (same system as index.html) ===== */
+        header {
+            background: #0a1929;
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+            position: relative;
+            flex-wrap: nowrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            letter-spacing: 1px;
+            gap: 0.5rem;
+        }
+        
+        .logo img {
+            height: 120px;
+            width: auto;
+        }
+        
+        /* desktop nav links */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #c9a96e;
+        }
+        
+        .cta-button {
+            background: #c9a96e;
+            color: white;
+            padding: 0.9rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
+            white-space: nowrap;
+        }
+        
+        .cta-button:hover {
+            background: #b89858;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 169, 110, 0.4);
+        }
+
+        /* ===== MOBILE MENU BUTTON ===== */
+        .mobile-menu-button {
+            display: none;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        /* ===== MOBILE NAV PANEL (dropdown) ===== */
+        .mobile-nav-panel {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            width: 100%;
+            background: #0a1929;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border-radius: 0 0 8px 8px;
+            padding: 1rem 1.5rem 1.5rem;
+        }
+
+        .mobile-nav-panel.open {
+            display: block;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: grid;
+            row-gap: 1rem;
+        }
+
+        .mobile-nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .mobile-nav-links a.active {
+            color: #c9a96e;
+            font-weight: 600;
+        }
+
+        .mobile-nav-links .cta-button {
+            display: inline-block;
+            text-align: center;
+        }
+        
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            background: linear-gradient(135deg, #0a1929 0%, #1a2d42 100%);
+            color: white;
+            padding: 180px 3rem 100px;
+            text-align: center;
+            margin-top: 100px; /* space for fixed nav */
+        }
+        
+        .page-header h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+        
+        .page-header p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* ===== SERVICE DETAIL SECTIONS ===== */
+        .service-detail {
+            max-width: 1400px;
+            margin: 100px auto;
+            padding: 0 3rem;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+        
+        .service-grid:nth-child(even) {
+            direction: rtl;
+        }
+        
+        .service-grid:nth-child(even) > * {
+            direction: ltr;
+        }
+        
+        .service-image {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        
+        .service-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .service-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #0a1929;
+            font-weight: 800;
+        }
+        
+        .service-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .service-features li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #c9a96e;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .service-cta {
+            display: inline-block;
+            background: #c9a96e;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .service-cta:hover {
+            background: #b89858;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(201, 169, 110, 0.4);
+        }
+        
+        /* ===== PROCESS SECTION ===== */
+        .process-section {
+            background: #f8f9fa;
+            padding: 100px 3rem;
+        }
+        
+        .process-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #0a1929;
+            font-weight: 800;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .process-step {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #c9a96e, #b89858);
+            color: white;
+            border-radius: 50%;
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 70px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .process-step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #0a1929;
+        }
+        
+        .process-step p {
+            color: #666;
+            font-size: 1.05rem;
+        }
+        
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background: linear-gradient(135deg, #0a1929 0%, #1a2d42 100%);
+            padding: 100px 3rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: #050d15;
+            color: white;
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        footer p {
+            opacity: 0.7;
+            font-size: 1rem;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .service-grid:nth-child(even) {
+                direction: ltr;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .logo img {
+                height: 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1.5rem;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                row-gap: 1rem;
+            }
+            
+            /* hide desktop links & CTA on mobile */
+            .nav-links,
+            .cta-button {
+                display: none;
+            }
+
+            /* show mobile menu button */
+            .mobile-menu-button {
+                display: inline-block;
+                margin-left: auto;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .service-content h2,
+            .section-title,
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            
+            .service-detail,
+            .process-section,
+            .cta-section {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="logo.png" alt="Avenstone Group Logo"></a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a class="active" href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <a href="contact.html" class="cta-button">Get Started</a>
+
+            <!-- Mobile menu trigger -->
+            <button class="mobile-menu-button" onclick="toggleMobileNav()">Menu</button>
+
+            <!-- Mobile dropdown panel -->
+            <div id="mobileNavPanel" class="mobile-nav-panel">
+                <ul class="mobile-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a class="active" href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a class="cta-button" href="contact.html">Get Started</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <h1>Our Services</h1>
+        <p>Comprehensive property solutions designed to exceed your expectations. From construction to management, we handle every detail.</p>
+    </section>
+
+    <!-- SERVICE DETAIL -->
+    <section class="service-detail">
+        <div class="service-grid">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Construction Services">
+            </div>
+            <div class="service-content">
+                <h2>Construction</h2>
+                <p>Transform your vision into reality with our comprehensive construction services. From ground-up developments to intricate renovations, our experienced team delivers exceptional quality on every project.</p>
+                <p>We specialize in both residential and commercial construction, combining modern techniques with time-tested craftsmanship to ensure your project exceeds expectations.</p>
+                <ul class="service-features">
+                    <li>New construction and ground-up development</li>
+                    <li>Commercial and residential renovations</li>
+                    <li>Project management and coordination</li>
+                    <li>Value engineering and cost optimization</li>
+                    <li>Quality control and safety compliance</li>
+                    <li>Licensed, bonded, and insured contractors</li>
+                </ul>
+                <a href="contact.html" class="service-cta">Start Your Project</a>
+            </div>
+        </div>
+
+        <div class="service-grid">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80" alt="Real Estate Services">
+            </div>
+            <div class="service-content">
+                <h2>Real Estate Sales</h2>
+                <p>Navigate the complex real estate market with confidence. Our experienced agents provide expert guidance throughout every step of your property transaction, whether you're buying your dream home or selling a valuable asset.</p>
+                <p>We leverage market insights, negotiation expertise, and cutting-edge marketing strategies to ensure optimal outcomes for our clients.</p>
+                <ul class="service-features">
+                    <li>Residential property sales and acquisitions</li>
+                    <li>Commercial real estate transactions</li>
+                    <li>Investment property consulting</li>
+                    <li>Market analysis and property valuation</li>
+                    <li>Professional photography and marketing</li>
+                    <li>Negotiation and closing support</li>
+                </ul>
+                <a href="contact.html" class="service-cta">Find Your Property</a>
+            </div>
+        </div>
+
+        <div class="service-grid">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80" alt="Property Management">
+            </div>
+            <div class="service-content">
+                <h2>Property Management</h2>
+                <p>Maximize your investment returns while minimizing stress. Our comprehensive property management services handle every aspect of property ownership, from tenant screening to maintenance coordination.</p>
+                <p>We treat your properties as if they were our own, ensuring optimal performance and tenant satisfaction.</p>
+                <ul class="service-features">
+                    <li>Tenant screening and placement</li>
+                    <li>Rent collection and financial reporting</li>
+                    <li>Maintenance coordination and repairs</li>
+                    <li>Property inspections and compliance</li>
+                    <li>24/7 emergency response</li>
+                    <li>Lease administration and renewals</li>
+                </ul>
+                <a href="contact.html" class="service-cta">Manage Your Property</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="process-section">
+        <div class="process-content">
+            <h2 class="section-title">Our Process</h2>
+            <p class="section-subtitle">A proven approach that delivers results every time</p>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Consultation</h3>
+                    <p>We start by understanding your goals, budget, and timeline to create a customized strategy.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Planning</h3>
+                    <p>Detailed planning and design phase ensures every aspect is considered before execution.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Execution</h3>
+                    <p>Our experienced team brings your project to life with precision and professionalism.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Delivery</h3>
+                    <p>We ensure everything exceeds your expectations and provide ongoing support as needed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA STRIPE -->
+    <section class="cta-section">
+        <h2>Ready to Get Started?</h2>
+        <p>Let's discuss how Avenstone Group can help you achieve your property goals.</p>
+        <div class="cta-buttons">
+            <a href="contact.html" class="hero-button-primary" style="display: inline-block; background: #c9a96e; color: white; padding: 1.2rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 700;">Schedule Consultation</a>
+            <a href="portfolio.html" class="hero-button-secondary" style="display: inline-block; background: transparent; color: white; padding: 1.2rem 2.5rem; border: 2px solid white; border-radius: 8px; text-decoration: none; font-weight: 700;">View Portfolio</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Avenstone Group. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // mobile nav toggle for "Menu" button
+        function toggleMobileNav() {
+            const panel = document.getElementById('mobileNavPanel');
+            panel.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

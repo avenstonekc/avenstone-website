@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An in-depth article from Avenstone Group about construction, real estate, and property management insights.">
+  <title>What Really Drives Construction Costs | Avenstone Group</title>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; line-height: 1.7; color: #333; }
+
+    /* ===== HEADER (same as others) ===== */
+    header { background: #0a1929; color: #fff; padding: 1.5rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+    nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 3rem; position: relative; flex-wrap: nowrap; }
+    .logo img { height: 120px; width: auto; }
+    .nav-links { display: flex; list-style: none; gap: 2.5rem; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 500; font-size: 1.05rem; transition: color .3s; }
+    .nav-links a:hover, .nav-links a.active { color: #c9a96e; }
+    .cta-button { background: #c9a96e; color: white; padding: .9rem 1.8rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all .3s; box-shadow: 0 4px 15px rgba(201,169,110,.3); white-space: nowrap; }
+    .cta-button:hover { background: #b89858; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,169,110,.4); }
+    .mobile-menu-button { display: none; border: 1px solid rgba(255,255,255,0.3); background: transparent; color: #fff; padding: .6rem 1rem; border-radius: 6px; font-size: .9rem; font-weight: 600; }
+    .mobile-nav-panel { display: none; position: absolute; left: 0; top: 100%; width: 100%; background: #0a1929; border: 1px solid rgba(255,255,255,0.08); border-radius: 0 0 8px 8px; box-shadow: 0 20px 40px rgba(0,0,0,.6); padding: 1rem 1.5rem 1.5rem; }
+    .mobile-nav-panel.open { display: block; }
+    .mobile-nav-links { list-style: none; display: grid; row-gap: 1rem; }
+    .mobile-nav-links a { color: #fff; text-decoration: none; font-weight: 500; }
+    .mobile-nav-links a.active { color: #c9a96e; }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, rgba(10,25,41,.95), rgba(26,45,66,.9)), 
+        url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80') center/cover;
+      color: #fff; text-align: center; padding: 200px 3rem 120px; margin-top: 100px;
+    }
+    .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; }
+    .hero p { font-size: 1.2rem; opacity: .9; }
+
+    /* ===== ARTICLE ===== */
+    .article-wrapper { max-width: 1000px; margin: 100px auto; padding: 0 3rem; }
+    .post-meta { color: #777; font-size: .95rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 1rem; }
+    .article-wrapper img { width: 100%; border-radius: 12px; margin: 2.5rem 0; box-shadow: 0 10px 30px rgba(0,0,0,.1); }
+    h2, h3 { color: #0a1929; font-weight: 800; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    p { margin-bottom: 1.5rem; color: #555; }
+    ul { margin: 1.5rem 0 1.5rem 1.5rem; }
+    ul li { margin-bottom: .8rem; }
+    blockquote { background: #f8f9fa; border-left: 5px solid #c9a96e; padding: 1.5rem 2rem; font-style: italic; color: #555; border-radius: 0 12px 12px 0; margin: 2rem 0; }
+    .back-link { display: inline-block; color: #c9a96e; text-decoration: none; font-weight: 600; margin-top: 2.5rem; }
+    .back-link:hover { color: #b89858; }
+
+    /* ===== FOOTER ===== */
+    footer { background: #050d15; color: white; text-align: center; padding: 3rem; margin-top: 120px; }
+    footer p { opacity: .7; font-size: 1rem; }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:900px){ .logo img{height:80px;} }
+    @media(max-width:768px){
+      nav{padding:0 1.5rem;flex-wrap:wrap;row-gap:1rem;}
+      .nav-links,.cta-button{display:none;}
+      .mobile-menu-button{display:inline-block;margin-left:auto;}
+      .hero h1{font-size:2.3rem;}
+      .article-wrapper{padding:0 1.5rem;}
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="index.html"><img src="logo.png" alt="Avenstone Group Logo"></a>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="active" href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <a href="contact.html" class="cta-button">Get Started</a>
+
+      <button class="mobile-menu-button" onclick="toggleMobileNav()">Menu</button>
+      <div id="mobileNavPanel" class="mobile-nav-panel">
+        <ul class="mobile-nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a class="active" href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a class="cta-button" href="contact.html">Get Started</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>What Really Drives Construction Costs</h1>
+    <p>By Avenstone Group · February 2025 · 5 min read</p>
+  </section>
+
+  <!-- ARTICLE -->
+  <section class="article-wrapper">
+    <div class="post-meta">
+      <span>Category: Construction</span> 
+      <span>Published: Feb 2025</span>
+    </div>
+
+    <p>Every project owner wants two things — quality results and predictable costs. But with so many variables, from material shortages to permitting delays, understanding what really drives project cost is essential.</p>
+
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80" alt="Construction site overview">
+
+    <h2>1. Labor & Skill Availability</h2>
+    <p>Labor shortages remain one of the biggest cost factors in today’s construction market. Skilled trades like electricians, framers, and HVAC specialists are in high demand, which directly impacts both rates and timelines.</p>
+
+    <h2>2. Material Costs & Supply Chains</h2>
+    <p>Global supply issues can increase costs on lumber, steel, and roofing materials. A transparent contractor will proactively adjust bids as supplier costs shift, rather than surprise you halfway through the project.</p>
+
+    <blockquote>
+      “The right planning and communication can save tens of thousands in change orders. Clarity upfront always pays off.”
+    </blockquote>
+
+    <h2>3. Design Changes Mid-Project</h2>
+    <p>Scope creep — the addition of new features or finishes during construction — is the single largest cause of cost overruns. It’s why we emphasize finalized selections before breaking ground.</p>
+
+    <ul>
+      <li>Finalize your floor plan and finishes early.</li>
+      <li>Request weekly progress updates.</li>
+      <li>Use a written change-order approval system.</li>
+    </ul>
+
+    <h2>4. Permitting, Inspections & Code Upgrades</h2>
+    <p>Municipal review timelines and local code changes can affect everything from your framing to your final inspection. A contractor with experience in your area will anticipate those hurdles before they cost you time and money.</p>
+
+    <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80" alt="Blueprint planning meeting">
+
+    <h2>Final Thoughts</h2>
+    <p>Budget accuracy starts with transparency. The best builders don’t hide costs — they explain them. At Avenstone Group, we provide itemized estimates and weekly reports so you always know where your investment stands.</p>
+
+    <a class="back-link" href="blog.html">← Back to All Articles</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Avenstone Group. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMobileNav() {
+      document.getElementById('mobileNavPanel').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
